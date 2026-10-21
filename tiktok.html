@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Conectar TikTok | Make Barata</title>
+  <link rel="icon" href="logo.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Conectar TikTok</h1>
+    <p>Página de retorno do Make Barata Bot (ferramenta interna).</p>
+  </header>
+  <main>
+    <p id="status">Aguardando autorização do TikTok…</p>
+    <p><code id="code" style="word-break: break-all"></code></p>
+  </main>
+  <footer>
+    <p><a href="index.html">Início</a> · <a href="privacidade.html">Política de Privacidade</a> · <a href="termos.html">Termos de Uso</a></p>
+  </footer>
+  <script>
+    const params = new URLSearchParams(location.search);
+    if (params.get("code")) {
+      document.getElementById("status").textContent = "Autorizado! Código para o bot:";
+      document.getElementById("code").textContent = params.get("code");
+    } else if (params.get("error")) {
+      document.getElementById("status").textContent = "Não autorizado: " + params.get("error");
+    }
+  </script>
+</body>
+</html>
